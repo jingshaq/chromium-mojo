@@ -27,3 +27,30 @@ Then use the ninja tool to start compiling
 ```
 ninja -C out/debug mojo
 ```
+
+
+分支修改的内容：
+https://github.com/brunoduan/mojo-strip/
+0. 对比修改的代码
+mojo/public/cpp/platform/named_platform_channel_posix.cc
+
+
+
+1.缺少文件 
+git clone https://chromium.googlesource.com/linux-syscall-support chromium-mojo/third_party/lss
+
+2.制定参数文件
+通过执行 
+gn args out/debug
+根据提示配置参数
+cat debug/args.gn 
+
+is_debug=false  
+
+declare_args() {
+  complete_static_lib = false
+}
+
+参数说明：
+is_debug=false  关闭tests
+complete_static_lib 指定编译静态库
